@@ -9,4 +9,4 @@ tags: [javascript]
 	cody.living = true;
 	cody.gender = 'male';
 
-最重要的是要记住：对象只是属性的容器，每个属性都有一个名称和一个值。javascript中采用具有命名值属性的容器这一概念作为javascript中表达式的构建块。`cody`对象是一个值，通过创建对象将这个值表示为javascript对象，给对象命名，然后将属性赋值给对象。
+最重要的是要记住：对象只是属性的容器，每个属性都有一个名称和一个值。javascript中采用具有命名值属性的容器这一概念作为javascript中表达式的构建块。`cody`对象是一个值，通过创建对象将这个值表示为javascript对象，给对象命名，然后将属性赋值给对象。 
