@@ -3,7 +3,7 @@ date: 2014-10-29 23:44:21
 tags: [javascript,Gulp]
 ---
 ###第一步安装node###
-首先，也是最基本的，我们需要搭建node环境。访问[nodejs.org](http://nodejs.org)，然后点击大大的install按钮，就可以下载安装了。
+首先，也是最基本的，我们需要搭建node环境。访问[nodejs.org](http://nodejs.org)，然后点击大大的install按钮，就可以下载安装了。<!--more-->
 ###第二步安装Gulp###
 在安装node之后，我们开始使用命令行安装Gulp，在命令行总输入
 <pre><code>sudo npm install -g gulp</code></pre>
@@ -68,8 +68,80 @@ gulp.task('scripts', function() {
 gulp.task('default', function(){
     gulp.run('lint', 'sass', 'scripts');
 
-    // 监听文件变化
-    gulp.watch('./js/*.js', function(){
-        gulp.run('lint', 'sass', 'scripts');
-    });
+// 监听文件变化
+ulp.watch('./js/*.js', function(){
+   gulp.run('lint', 'sass', 'scripts');
+});
 });</pre>
+
+现在，分段解释下这段代码
+<pre></pre>
+####引入组件####
+``` 
+var gulp = require('gulp);
+
+var jshint = require('gulp-jshint);
+va sass = require('gulp-sass');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename'); 
+```
+这一步，我们引入了核心的gulp和其他依赖插件，接下来，分开创建hint，sass，scripts和default这四个不同的任务。
+####Lint任务####
+```
+gulp.task('lint',function() {
+	gulp.src('./js/*.js')
+	.pipe(jshint())
+	.pipe(jshint.reporter('default'));
+});
+```
+lint任务会检查<code>js/</code>目录下js文件有没有报错或者警告。
+####sass任务####
+```
+gulp.task('sass', function() {
+	gulp.src('./sass/*.sass')
+	.pipe(sass())
+	.pipe(gulp.dest('./css'));
+});
+```
+Sass任务会编辑<code>sass/</code>目录下的sass文件，并把编译完成的css文件保存到<code>css</code>目录中。
+####scripts任务####
+```
+gulp.tasl('scripts', function() {
+	gulp.src('./js/*.js')
+	.pipe(concat('all.js'))
+	.pipe(gulp.dest('./dest'))
+	.pipe(rename('all.min.js'))
+	.pipe(uglify())
+	.pipe(gulp.dest('./dist'));
+});
+```
+scripts任务会合并<code>js/</code>目录下所有的js文件并输出到<code>dist/</code>目录，然后gulp会重新命名，压缩合并文件，输出到<code>dist/</code>目录。
+####default任务####
+```
+gulp.task('default', function() {
+	gulp.run('lint','sass','scripts');
+	gulp.watch('./js/*.js', function() {
+		gulp.run('lint','sass','scripts');
+	});
+});
+```
+这时，我们创建了一个基于其他任务的default任务。使用.run方法关联和运行我们上面定义的任务，使用.watch()方法去监听指定目录的文件变化，当有文件变化时，会运行回调定义其他任务。
+现在，回到命令行，可以直接运行gulp任务了。
+***
+```
+gulp
+```
+
+这将执行定义的default任务，换言之，这个一下的命令方式同一个意思
+****
+```
+gulp default
+```
+****
+当然，我们也可以在gulpfile.js中定义的任意任务，比如，现在运行sass任务：
+
+```
+gulp sass
+```
+
