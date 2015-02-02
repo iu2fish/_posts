@@ -1,4 +1,4 @@
-title: git 的基本指令
+title: Git 的基本指令
 date: 2014-11-09 22:14:03
 tags: [git]
 ---
@@ -10,9 +10,7 @@ tags: [git]
 <pre>
 git config --global user.name "Example Surname"
 git config --global user.email "your.email@gmail.com"
-
- #Set default so that all changes are always pushed to the repository
- 
+Set default so that all changes are always pushed to the repository
 git config --global push.default "matching"
 </pre>
 获取Git配置信息，执行以下命令：
