@@ -2,6 +2,8 @@ layout: post
 title: 携程门票无线组招聘JD
 date: 2016-03-29 09:43:27
 tags: [携程,App,无线,ctrip]
+headerimg: http://7xt1yf.com1.z0.glb.clouddn.com/post-hc.jpg
+preview: 携程门票无线组招兵买马了
 ---
 ## 岗位描述
 * 利用各种web技术进行开发，制作标准优化代码，并增加交互动态功能，通过技术来改变用户体验。
@@ -17,4 +19,3 @@ tags: [携程,App,无线,ctrip]
 
 备注：此次招聘是社招名额，中高级level，不招实习生。
 年终奖也领了，想换工作的，来吧，简历发到<wangfeng@ctrip.com>邮箱，谢谢~
-
