@@ -1,10 +1,11 @@
 title: Git中级用户的25个提示
 date: 2015-10-06 19:38:10
+headerimg: http://7xt1yf.com1.z0.glb.clouddn.com/post-bg-ios9-web.jpg
+preview: 我使用 Git 大约已经有18个月时间，自认为能很好地驾驭它了。但是当我们请到 GitHub 的 Scott Chacon 来到 LVS 公司（一个博彩/游戏软件供应商/开发商）做专场培训时，我在第一天就学到了大量的东西。由于有些人总是对使用 Git 自我感觉良好，因此，我想分享一些我从社区获取到的 Git 精品，这样就可能会帮助那些人无需浪费大量研究时间而直接找到答案。
 ---
 
 	作者/Andy Jeffries
-	 Ruby on Rails 开发者
-
+	Ruby on Rails 开发者
 我使用 Git 大约已经有18个月时间，自认为能很好地驾驭它了。但是当我们请到 GitHub 的 Scott Chacon 来到 LVS 公司（一个博彩/游戏软件供应商/开发商）做专场培训时，我在第一天就学到了大量的东西。
 由于有些人总是对使用 Git 自我感觉良好，因此，我想分享一些我从社区获取到的 Git 精品，这样就可能会帮助那些人无需浪费大量研究时间而直接找到答案。
 ![](https://raw.githubusercontent.com/iu2fish/_posts/master/media/14428125581957/14428126636942.jpg)
@@ -45,7 +46,7 @@ date: 2015-10-06 19:38:10
 	++    puts "Annyong Haseyo"
 	    end
 	  end
-  
+
 如果文件是二进制的，文件比较就不是那么容易了...你通常要做的是尝试每个版本的二进制文件，并决定使用哪一个（或者在二进制文件编辑器手动复制部分内容）。从一个特定分支下 pull 一个文件副本（如果你要合并主分支和分支132的话）：
 
 		$ git checkout master flash/foo.fla # or...
@@ -73,20 +74,20 @@ date: 2015-10-06 19:38:10
 Git 最强大的功能之一是可以有一个以上的远程服务器（另一个事实，你总是可以运行一个本地仓库）。你不一定总是需要写访问权限，你可以从多个服务器中读取（用于合并），然后写到另一个服务器中。添加一个远程服务器很简单：
 
 		$ git remote add john git@github.com:johnsomeone/someproject.git
-		
+
 
 如果你想查看远程服务器的相关信息，你可以这样做
 
 		#shows URLs of each remote server
 		$ git remote -v
-		
+
 		#gives more details about each
 		$ git remote show name
-	
+
 你还可以查看本地分支和远程分支之间的差别
-		
+
 		$ git diff master ..john/master
-		
+
 你也能查看不在远程分支上的HEAD的变化
 
 		git log remote/branch..
@@ -94,47 +95,47 @@ Git 最强大的功能之一是可以有一个以上的远程服务器（另一�
 ### 6.标签
 在Git中存在两种类型的标签。一个是轻量级标签和一个注解标签。记着第二个提示中说过Git是基于指针的，二者区别很简单。一个轻量级标签无非是一个指向提交的具名指针。你可以改变它并指向另一个提交。一个注解标签是一个指向标签对象的具名指针，这个标签对象拥有自己的消息和历史。如果有需要，标签对象的消息可以采用GPG加密签名。
 创建两种类型的标签很容易，只是一个命令行选项的差异
-		
+
 		git tag to-be-tested
 		$ git tag -a v1.1.0
-	
+
 
 ### 7.创建分支
 在Git中创建分支非常容易，闪电般的速度，因为它仅仅需要创建一个不到100字节的文件，创建一个新分支并切换过去的通用写法是:
-		
+
 		git branch feature123
 		git checkout feature123
-		
+
 
 当然，如果你知道你要马上切换过去，你可以使用一条命令就能做到：
 
 		git checkout -b feature123
-		
+
 如果你要重命名一个本地分支，同样是件很容易的时，长命令用来显示具体的执行过程：
 
 		git checkout -b twitter-experiment feature123
 		git branch -d feature123
-		
+
 更新：或者你只使用 `git branch` 和 `-m` 选项就可以一步到位“
 
 		git branch -m twitter-experiment
 		git branch -m feature123 twitter-experiment
-		
+
 ### 8.合并分支
 在某个时候，你想要合并你的变更。有两种方式可以实现：
 
 		git checkout master
 		git merge feature123
 		git rebase feature123
-		
+
 `merge`和`rebase`的区别在于，merge试图解决变更而且创建一个融合后的新提交，而rebase则试图把自你上次在其他分支上得变化，在另一个分支的HEAD上重现。但是，在你向远程服务器推送一个分支之后，不要进行rebase操作，这会引发混淆问题。
 
 如果你不能确定哪些分支仍然有独立的工作在进行，以便你能知道你需要合并哪一个分支以及删除哪些分支，git branch 命令有两个选项可以帮助实现这一点：
 
-		git branch --merge 
-		
+		git branch --merge
+
 		git branch --no-merged
-		
+
 ### 9.远程分支
 如果你有一个本地分支，你想让它出现在远程服务器上，你可以使用这样一个推送命令：
 
@@ -143,17 +144,17 @@ Git 最强大的功能之一是可以有一个以上的远程服务器（另一�
 
 更新：感谢Erlend 的评论提到，这实际上和git push origin twitter-experiment 达到的效果是一样的，但是通过使用全部语法，你能看到实际上在两端使用了不同的名字，你本地的名字可能是add-ssl-support 而远程的名字可能是issue-11199。
 如果你想删除一个远程服务器上得分支，请注意分支名称之前的冒号
-		
+
 		git push origin :twitter-experiment
-		
+
 如果你想显示所有远程分支的状态，你能像这样查看它们：
 
 		git push origin :twitter-experiment
-		
+
 如果你想显示所有远程分支的状态，你能像这样查看他们：
 
 		git remote show origin
-		
+
 这可能会列出一些服务器上曾经有过，但现在已不存在的分支。如果碰到这种情况，你可以很轻松的使用如下命令从本地检出并将其删除：
 
 		git remote prune
@@ -162,33 +163,33 @@ Git 最强大的功能之一是可以有一个以上的远程服务器（另一�
 
 		git branch --track myfeature origin/myfeature
 		git checkout myfeature
-		
+
 然而，如果你使用 -b 标示符检出的话，新版的 Git 会自动建立跟踪：
 
 		git checkout -b myfeature origin/myfeature
-		
+
 ## 在临时存放区、索引和文件系统中保存内容
 ### 10.临时存放 Stashing
 在 Git 中，你可以把当前的工作状态存储在一个临时的存储区域堆栈，然后重新加以利用。简单的案例如下：
 
-		git stash 
+		git stash
 		git stash pop
-		
+
 很多人推荐使用，git stash apply 来代替 pop ，然而如果你真的这么做的话，你最终得到一个长长的毫无用处的储存清单。如果对它进行清理，pop 只会把它从堆栈中删除。如果你已经使用了 git stash apply ，你可以使用如下命令从堆栈中删除最后一项：
 
 		git stash drop
-		
+
 Git 会基于当前的提交消息自动创建一个注释消息。如果，你更喜欢使用一个自定义的消息，因为，他可能和之前的提交无关：
 
 		git stash save "my stash message"
-		
+
 如果你想从你的列表中不必是最后一个，对一个特定的stash加以利用，你可以列出它们并像这样使用它们
 
 		$ git stash list
 		stash@{0}: On master: Changed to German
 		stash@{1}: On master: Language is now Italian
 		$ git stash apply stash@{1}
-	
+
 ### 11.交互式添加
 在 Subversion 的世界里，你修改文件然后只是提交有变化的文件。而在 Git 的世界里，你在提交某些文件甚至某些补丁上有更多的控制权。为了提交某些文件或者文件的某些部分，你必须进入交互模式。
 
@@ -229,11 +230,11 @@ Git 会基于当前的提交消息自动创建一个注释消息。如果，你�
 此时，该文件对象已在数据库中，但是如果你不设置一些东西指向那个文件对象，它将被作为垃圾而回收。最简单的方法是标记它：
 
 		$ git tag myfile 51fc03a9bb365fae74fd2bf66517b30bf48020cb
-		
+
 既然在这里我们已经标记了myfile。当我们需要获取该文件时，我们可以这样做：
 
 		git cat-file blob myfile
-		
+
 程序员可能经常用到的工具文件，不需要每次都检出在磁盘上，这种方法非常有效。
 
 ## 日志记录
@@ -243,11 +244,11 @@ Git 会基于当前的提交消息自动创建一个注释消息。如果，你�
 如果你不使用 git log 查看最近提交历史的话，你就不能长时间顺利的使用Git。但是，也存在一些如何更好使用它的建议。例如，你可以查看每次提交改变的一个补丁。
 
 		git log -p
-		
+
 或者，你可以只是查看一个那些文件有所更改的概述：
 
 		git log --stat
-		
+
 你可以在一行中设置一个不错得别名，用于显示简短的提交和漂亮的带有消息的分支图例如：gitk
 
 		git config --global alias.lol "log --pretty-online --abbrev-commit --graph --decorate"
@@ -259,29 +260,29 @@ Git 会基于当前的提交消息自动创建一个注释消息。如果，你�
 如果你想在日志中查询一个特定作者，你可以这样指定
 
 		git log --author=Andy
-		
+
 更新：感谢Johannes的评论，我终于化解了一部分疑惑。
 或者如果你有一个搜索词出现在提交消息中：
 
 		git log --grep="something in the message"
-		
+
 还有一个更强大的叫pickaxe的命令，他可以查找来自添加或删除一个特定的内容，也就是当它第一次出现或者被删除的时候。这样你就可以知道何时增加了一行，但是如果一行中得字符随后被改变，你将无从得知。
 
 		git log -S "TODO: checkout for admin status"
-		
+
 如果你改变一个特定的文件会怎么样呢，例如：lib/foo.sh
 
 		git log lib/foo.sh
-		
+
 比如说你有一个feature/123分支和一个feature/456分支，你想查看在这些分支，但却不在主分支上得提交：
-		
+
 		git log feature/123 feature/456 ^master
-		
-		
+
+
 你也可以使用ActiveSupport 风格的日期缩小日期范围：
 
 		git log --since-2.months.ago --until-1.day.ago
-		
+
 它默认使用OR模式来组合查询，但是你也可以很轻松的改为AND模式
 
 		git log --since=2.months.ago --until=1.day.ago --author=andy -S "something" --all-match
@@ -303,8 +304,8 @@ Git 会基于当前的提交消息自动创建一个注释消息。如果，你�
 
 这最简单的方法是这样来用
 
-		git log origin/master ..new 
-		
+		git log origin/master ..new
+
 你也可以删除 new 使用当前的HEAD
 
 ## 时间回退和错误修复
@@ -312,22 +313,22 @@ Git 会基于当前的提交消息自动创建一个注释消息。如果，你�
 如果你还没有提交一个更改，你可以很容易的重置它：
 
 		git reset HEAD lib/foo.sh
-		
+
 通常使用unstage 作为别名比较好，因为它是不是那么显而易见。
 
 		git config --global alias.unstage "reset HEAD"
 		git unstage lib/foo.sh
-		
+
 如果你已经提交了文件，那么你可以做两件事，如果是最后一次提交，你可以这样修改：
 
 	git commit --amend
-	
+
 这将回滚到最后一次提交，让你的工作副本回到变化存储的暂存区状态，你可以编辑提交消息准备下一次的提交。
 如果你的提交不止一次，并且只想完全回滚他们，你可以重置分支回到之前的时间点：
 
 		git checkout feature123
 		git reset --hard HEAD ~2
-		
+
 如果你真的想把分支只想一个完全不同的SHA-1 也许你把一个分支的HEAD指向另一个分支，或者进一步提交，你可以按照以下方式去做：
 
 		git checkout Foo
@@ -343,15 +344,15 @@ Git 会基于当前的提交消息自动创建一个注释消息。如果，你�
 		git branch experimental
 		git reset --hard master~3
 		git checkout experimental
-		
+
 如果你已经在一个分支的一个分支的一个分支等上面做了些变更，这将会更复杂。然后你需要做的就是在这个分支上，将其变更release到另外一个地方“
 
 		git branch newtopic STARTPOINT
 		git rebase oldtopic --onto newtopic
-		
+
 ### 19.交互式rebasing
 这是一个很酷的特性，我之前已看过演示，但当时没有真正搞明白，现在来看其实很简单。比方说，你已做了3次提交，但是你想对它们进行重新排序或者编辑（或者合并它们）：
-		
+
 	git rebase -i master~3
 
 然后你将编辑器打开。你所要做的就是修改 “pick/squash/edit 的指令来进行如何提交，然后保存/退出。在编辑之后，你可以使用 `git rebase —continue `让你的每一个指令一个一个进行。
@@ -363,7 +364,7 @@ Git 会基于当前的提交消息自动创建一个注释消息。如果，你�
 如果你已经提交了一些内容到你的分支中（也许你是从SVN中的旧代码库导入的），你想从历史中删除掉所有的已提交内容：
 
 		git filter-branch --tree-filter 'rm -f *.class' HEAD
-		
+
 如果你已经向远程服务器推送过代码，但自那之后提交的都是一些垃圾，在推送之前你可以在本地系统上执行这样的操作：
 
 		git filter-branch --tree-filter 'rm -f *.class' origin/master..HEAD
@@ -385,16 +386,16 @@ Git 会基于当前的提交消息自动创建一个注释消息。如果，你�
 寻找谁更改了一个文件中的一行代码经常会用到。简单命令如下：
 
 		git blame FILE
-		
+
 有时更改来自于前一个文件（如果你已经合并了两个文件，或者你已经移动了一个函数），因此你可以这样用：
 
 		$ # shows which file names the content came from
 		$ git blame -C FILE
-		
+
 有时通过向前或向后点击来进行变化跟踪，这是很好的方法。有一个内置的 GUI 程序专门为此设计：
 
 		$ git gui blame FILE
-		
+
 ### 24.数据库维护
 Git 通常不需要大量维护，它基本上可以自我维护。然而，你可以使用如下命令查看数据库统计信息：
 
@@ -403,11 +404,11 @@ Git 通常不需要大量维护，它基本上可以自我维护。然而，你�
 如果数值很高，你可以选择使用垃圾回收你的重复内容。这不会影响推送或者其它用户，但却可以让你的命令运行更快且占用更少空间：
 
 		$ git gc
-		
+
 经常运行一致性检查也是值得推荐的做法：
 
 		$ git fsck --full
-		
+
 你也可以在行尾添加一个 —auto 参数（如果你频繁运行它，或者在你的服务器上每日从 crontab 中运行它），如果统计数据表明必须进行要进行一致性检查，只要 fsck 命令就行。
 
 如果检查 “dangling” 或 “unreachable” 的结果一切正常，这经常是由于回退 HEAD 或 rebasing的结果。如果检查“missing” 或 “sha1 mismatch” 出了问题...寻求专业帮助吧！
@@ -420,4 +421,3 @@ Git 通常不需要大量维护，它基本上可以自我维护。然而，你�
 你可以使用 git reflog 来发现一个 SHA-1 哈希值，如果你近期访问过它的话。
 
 另一种方法是使用 git fsck —lost-found。一个悬空的提交就是一个 lost HEAD（它只会是一个已删除分支的 HEAD，因为当一个 HEAD^ 被 HEAD 引用时，它就没有悬空）。
-

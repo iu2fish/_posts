@@ -1,13 +1,15 @@
 layout: post
 title: 携程门票无线组招聘JD
 date: 2016-03-29 09:43:27
-tags: 携程 App 无线 ctrip
+tags: [携程,App,无线,ctrip]
+headerimg: http://7xt1yf.com1.z0.glb.clouddn.com/post-hc.jpg
+preview: 携程门票无线组招兵买马了
 ---
-##岗位描述
+## 岗位描述
 * 利用各种web技术进行开发，制作标准优化代码，并增加交互动态功能，通过技术来改变用户体验。
 * 负责携程门票业务HTML5版本，携程门票Hybrid APP业务的前端开发工作。
 
-##岗位要求
+## 岗位要求
 * 掌握JavaScript语言，能够脱离各种JavaScript类库进行跨平台跨浏览器开发。
 * 熟悉各种web前端技术，包括HTML，CSS，JavaScript，但不限于这些。
 * 具有ECMAScript5/HTML5/CSS3/移动设备上前端开发，有NodeJs开发经验更好。
@@ -16,4 +18,4 @@ tags: 携程 App 无线 ctrip
 * 最后一条也是最重要的要有一颗责任心，对自己的代码认真负责。
 
 备注：此次招聘是社招名额，中高级level，不招实习生。
-年终奖也领了，想换工作的，来吧，简历发到wangfeng@ctrip.com邮箱，谢谢~
+年终奖也领了，想换工作的，来吧，简历发到<wangfeng@ctrip.com>邮箱，谢谢~
