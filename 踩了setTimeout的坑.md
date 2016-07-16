@@ -1,5 +1,6 @@
 layout: post
 title: 踩了setTimeout的坑
+layout: categories
 date: 2016-05-31 21:58:25
 tags: [JavaScript,前端]
 headerimg: http://7xt1yf.com1.z0.glb.clouddn.com/light.jpg
@@ -7,7 +8,7 @@ preview: 今天遇到了一个奇异的bug，setTimeout无效，原因竟然是�
 ---
 今天测试说，蒹葭同学，uat环境有个bug，秒杀产品还没结束，但是前端显示的是已经结束了，你看一下。
 我内心OS：妈蛋，又出bug了。
-不过还是乖乖的去debug了一下代码，最后排查出来是设置的定时器没有生效，直接执行了。
+不过还是乖乖的去debug了一下代码，最后排查出来是设置的定时器没有生效，直接执行了。<!-- more -->
 
 ```
 var timer = new Date('xxxx-xx-xx') - new Date('xxxx-xx-xx');

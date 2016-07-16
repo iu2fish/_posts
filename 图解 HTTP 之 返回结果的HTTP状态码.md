@@ -1,4 +1,7 @@
 title: 图解 HTTP 之 返回结果的HTTP状态码
+keywords:
+- javascript
+- hexo
 date: 2015-10-06 19:38:10
 ---
 ## 状态码的类别
