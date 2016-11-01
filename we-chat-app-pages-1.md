@@ -44,12 +44,12 @@ wx.setStorage({
 ```
 wx.removeStorage(OBJECT)
 ```
-![](media/14780057339213.jpg)
+![](https://raw.githubusercontent.com/iu2fish/_posts/master/media/14780057339213.jpg)
 
 也提供了，同步删除的方法。
 `wx.removeStorageSync(KEY)`
 用法
-![](media/14780058000923.jpg)
+![](https://raw.githubusercontent.com/iu2fish/_posts/master/media/14780058000923.jpg)
 ##### request请求并发限制
 微信为了保证安全，在同时request请求的时候，做了限制，也就是同时并发5个请求，这个暂时无解。只能自己去封装队列来处理请求。
 ##### 5层url跳转
