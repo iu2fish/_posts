@@ -1,6 +1,5 @@
 layout: post
 title: 踩了setTimeout的坑
-layout: categories
 date: 2016-05-31 21:58:25
 tags: [JavaScript,前端]
 headerimg: http://7xt1yf.com1.z0.glb.clouddn.com/light.jpg
