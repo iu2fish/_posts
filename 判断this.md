@@ -12,3 +12,4 @@ date: 2016-07-06 00:12:00
 * 函数是否通过call apply 或者硬绑定调用？如果是的话，this绑定的是指定的对象。 var bar = foo.call(obj);
 * 函数是否在某个上下文对象中调用？如果是的话，this绑定的是那个上下文。var bar = obj.foo();
 * 如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到underfined，否则绑定到全局对象。 var bar = foo();
+<!-- more -->

@@ -15,7 +15,7 @@ action 本质上是javascript 的普通对象。约定action内使用一个字�
 ## reducer
 reducer 是个形式为(state, action) => state 的纯函数 ，描述了action 如何把state 转变成下一个state。
 > Reducer  这个名称来源于Array.prototype.reduce中的第一个参数，reducer 。reducer 是一个累加器函数，它的参数是上个累加值和数组当前元素，然后通过计算返回本次的累加值。在redux中，state 就是那个累加值，action 就是数组当前的元素。reduce 以及map filter 等方法是函数式编程中十分常用的数组处理方法。
-
+<!-- more -->
 state 的形式取决于开发者项目的需要，可是是基本类型，数组，是对象，甚至是immutable.js 生成的数据结构。唯一的点是当state 变化时需要返回全新的对象，而不是修改传入的参数。reducer 要用纯函数。那么什么是纯函数。
 ### 纯函数
 纯函数 pure function 是这样一种函数，输入输出数据流全是显式的，显式的意思是，函数与外界交换数据只有一个唯一的渠道，参数和返回值。函数从函数外部接受的所有输入信息都通过参数传递到该函数内部；函数输出到函数外部的所有信息都通过函数返回值传递到该函数外部。
